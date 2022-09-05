@@ -13,30 +13,37 @@ class MyViewController: UIViewController {
     
     // Closure Pattern #2
     func didTapClosure(message: String) {
-        print(message, "alternative syntax")
+        print(message)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         style()
         layout()
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .didTapNCButton, object: nil)
+    }
 }
+
+
 
 extension MyViewController {
     func setup(){
-        // Delegate Pattern
+        // Delegate Pattern #1
         myView.delegate = self
         
-        // Closure Pattern
+        // Closure Pattern #1 (closure pattern #2 needs to be commented out for this to work)
         myView.didTapClosureButton = { [weak self] message in
             print(message)
         }
         
-        // Closure Patten # 2
+        // Closure Patten #2
         myView.didTapClosureButton = didTapClosure
-
+        
+        // Notification Center Pattern
+        registerForNotifications()
     }
     
     func style() {
@@ -56,4 +63,20 @@ extension MyViewController: MyViewDelegate {
         print(message)
     }
 }
+
+// Notification Center Pattern
+extension MyViewController {
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didTapNCButton), name: .didTapNCButton, object: nil)
+    }
+    
+    @objc func didTapNCButton(_ notification: NSNotification){
+        guard let userInfo = notification.userInfo else { return }
+        if let message = userInfo["message"] as? String {
+            print(message)
+        }
+    }
+}
+
+
 

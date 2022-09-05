@@ -13,6 +13,7 @@
 		8D0BB9DD28C4A79F00467CDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0BB9DB28C4A79F00467CDE /* LaunchScreen.storyboard */; };
 		8D0BB9E528C4A7B600467CDE /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BB9E428C4A7B600467CDE /* MyView.swift */; };
 		8D0BB9E728C4A8E200467CDE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BB9E628C4A8E200467CDE /* Extensions.swift */; };
+		8D47700F28C5CD4D003FADA5 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D47700E28C5CD4D003FADA5 /* NSNotificationName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8D0BB9DE28C4A79F00467CDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0BB9E428C4A7B600467CDE /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		8D0BB9E628C4A8E200467CDE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8D47700E28C5CD4D003FADA5 /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				8D0BB9D028C4A79D00467CDE /* AppDelegate.swift */,
 				8D0BB9D428C4A79D00467CDE /* MyViewController.swift */,
 				8D0BB9E428C4A7B600467CDE /* MyView.swift */,
+				8D47700E28C5CD4D003FADA5 /* NSNotificationName.swift */,
 				8D0BB9E628C4A8E200467CDE /* Extensions.swift */,
 				8D0BB9D928C4A79F00467CDE /* Assets.xcassets */,
 				8D0BB9DB28C4A79F00467CDE /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				8D0BB9E728C4A8E200467CDE /* Extensions.swift in Sources */,
 				8D0BB9E528C4A7B600467CDE /* MyView.swift in Sources */,
+				8D47700F28C5CD4D003FADA5 /* NSNotificationName.swift in Sources */,
 				8D0BB9D528C4A79D00467CDE /* MyViewController.swift in Sources */,
 				8D0BB9D128C4A79D00467CDE /* AppDelegate.swift in Sources */,
 			);

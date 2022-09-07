@@ -86,10 +86,9 @@ extension MyView {
         
         kvoButton.translatesAutoresizingMaskIntoConstraints = false
         kvoButton.configuration = .filled()
-        kvoButton.configuration?.baseBackgroundColor = .systemGray
+        kvoButton.configuration?.baseBackgroundColor = .systemOrange
         kvoButton.configuration?.title = "Key-Value Observing"
         kvoButton.addTarget(self, action: #selector(kvoButtonTapped), for: .touchUpInside)
-
     }
     
     private func layout() {

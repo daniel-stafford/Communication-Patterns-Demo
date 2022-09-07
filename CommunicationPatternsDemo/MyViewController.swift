@@ -11,6 +11,8 @@ class MyViewController: UIViewController {
     
     let myView = MyView()
     
+    var observableMessage: Any?
+    
     // Closure Pattern #2
     func didTapClosure(message: String) {
         print(message)
@@ -32,7 +34,7 @@ extension MyViewController {
         myView.delegate = self
         
         // Closure Pattern #1 (closure pattern #2 needs to be commented out for this to work)
-        myView.didTapClosureButton = { [weak self] message in
+        myView.didTapClosureButton = { message in // remember to use weak self if needed
             print(message)
         }
         
@@ -41,6 +43,12 @@ extension MyViewController {
         
         // Notification Center Pattern
         registerForNotifications()
+        
+        // KVO Pattern
+        observableMessage = myView.kvoMessage.observe(\.text, options:  .new) { object, change in
+            guard let message = change.newValue else { return }
+            print(message)
+        }
     }
     
     func style() {
@@ -78,7 +86,7 @@ extension MyViewController {
 // Responder Chain Pattern
 extension MyView: ButtonAction {
     func didTapResponderButton(_ sender: MyView) {
-        print(" 🔥 Responder button tapped") // Data cannot be passed via Responder chain
+        print("🔥 Responder button tapped") // Data cannot be passed via Responder chain
     }
 }
 

@@ -2,4 +2,4 @@
 
 ### A simple app demonstrating different ways of passing data and responding to events between a view and view controller.
 
-<img width="335" alt="image" src="https://user-images.githubusercontent.com/33048490/188819679-d8f44714-2395-4282-b3de-fcf311293c87.png">
+<img width="360" alt="image" src="https://user-images.githubusercontent.com/33048490/188834942-9eac875c-1a29-4c70-99a5-91c240b88044.png">

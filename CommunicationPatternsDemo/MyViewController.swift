@@ -22,9 +22,6 @@ class MyViewController: UIViewController {
         style()
         layout()
     }
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .didTapNCButton, object: nil)
-    }
 }
 
 
@@ -59,7 +56,7 @@ extension MyViewController {
 
 // Delegate Pattern
 extension MyViewController: MyViewDelegate {
-    func didRequestDelegatePattern(_ sender: MyView, message: String) {
+    func didTapDelegateButton(_ sender: MyView, message: String) {
         print(message)
     }
 }
@@ -75,6 +72,13 @@ extension MyViewController {
         if let message = userInfo["message"] as? String {
             print(message)
         }
+    }
+}
+
+// Responder Chain Pattern
+extension MyView: ButtonAction {
+    func didTapResponderButton(_ sender: MyView) {
+        print(" 🔥 Responder button tapped") // Data cannot be passed via Responder chain
     }
 }
 

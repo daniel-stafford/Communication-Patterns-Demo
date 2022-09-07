@@ -9,7 +9,12 @@ import UIKit
 
 // Delegate Pattern
 protocol MyViewDelegate: AnyObject {
-    func didRequestDelegatePattern(_ sender: MyView, message: String)
+    func didTapDelegateButton(_ sender: MyView, message: String)
+}
+
+// Responder Pattern
+@objc protocol ButtonAction: AnyObject { // @objc to make it visible to the Objective-C runtime.
+    func didTapResponderButton(_ sender: MyView)
 }
 
 class MyView: UIView {
@@ -25,6 +30,7 @@ class MyView: UIView {
     let delegateButton = UIButton(type: .system)
     let closureButton = UIButton(type: .system)
     let notificationCenterButton = UIButton(type: .system)
+    let responderButton = UIButton(type: .system)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,10 +68,17 @@ extension MyView {
         notificationCenterButton.configuration?.baseBackgroundColor = .systemGray
         notificationCenterButton.configuration?.title = "Notification Center"
         notificationCenterButton.addTarget(self, action: #selector(notificationCenterButtonTapped), for: .touchUpInside)
+        
+        responderButton.translatesAutoresizingMaskIntoConstraints = false
+        responderButton.configuration = .filled()
+        responderButton.configuration?.baseBackgroundColor = .systemBrown
+        responderButton.configuration?.title = "Responder Chain"
+        // Responder Chain Pattern
+        responderButton.addTarget(nil, action: #selector(ButtonAction.didTapResponderButton), for: .touchUpInside)
     }
     
     private func layout() {
-        stackView.addArrangedSubviews(delegateButton, closureButton, notificationCenterButton)
+        stackView.addArrangedSubviews(delegateButton, closureButton, notificationCenterButton, responderButton)
         addSubviews(stackView)
         stackView.pinToCenter(of: self)
     }
@@ -74,7 +87,7 @@ extension MyView {
 extension MyView {
     // Delegate Pattern
     @objc func delegateButtonTapped(sender: UIButton) {
-        delegate?.didRequestDelegatePattern(self, message: "👍 Delegate button tapped!")
+        delegate?.didTapDelegateButton(self, message: "👍 Delegate button tapped!")
     }
    
     // Closure Pattern
@@ -84,9 +97,8 @@ extension MyView {
    
     // Notification Pattern
     @objc func notificationCenterButtonTapped(sender: UIButton) {
-        let userInfo = [String: String]()
+        let userInfo = [ "message" : "🚀 Notification button tapped" ]
         NotificationCenter.default.post(name: .didTapNCButton, object: nil, userInfo: userInfo)  // not sure when to use object vs. userInfo
-
     }
 }
 
